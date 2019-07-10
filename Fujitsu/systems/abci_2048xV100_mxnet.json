@@ -1,0 +1,27 @@
+{
+    "division": "open",
+    "status": "research",
+    "hardware": "CX2570-m4 ABCI(AIST)",
+    "framework": "custom MXNet 1.3.1",
+    "interconnect": "InfiniBand EDR 100Gb/s with fat tree topology",
+    "os": "CentOS 7.5",
+    "libraries": "CentOS 7.5 / python 3.6.5 / openmpi_version 2.1.6 / mofed_version 4.4.1 / cuda_version 9.2.148.1 / cuda_driver_version 410.104 / nccl_version 2.4.2 / cudnn_version 7.5.0",
+    "compilers": "gcc version 7.3.0",
+    "nodes": [
+            {
+                "num_nodes": 512,
+                "cpu": "2x Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz",
+                "num_cores": 40,
+                "num_vcpus": 80,
+                "accelerator": "Tesla V100-SXM2-16GB",
+                "num_accelerators": 4,
+                "sys_mem_size": 384,
+                "sys_storage_type": "NVMe SSDs",
+                "sys_storage_size": "1.6TB",
+                "cpu_accel_interconnect": "UPI",
+                "network_card": "Mellanox Technologies MT27700 Family [ConnectX-4]",
+                "num_network_cards": 2,
+                "notes": "2x Mellanox CS7500 Director Switch, 229x Mellanox SB7890"
+            }
+    ]
+}

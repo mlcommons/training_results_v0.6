@@ -1,0 +1,132 @@
+# Parameter file
+# Copyright FUJITSU LIMITED 2019
+
+test -z "$OMPI_COMM_WORLD_RANK" && OMPI_COMM_WORLD_RANK=0
+
+PARAMS=(
+    --network                      "resnet-v1b-fl"
+    --num-layers                   "50"
+    --gpus                         "0,1,2,3"
+    --kv-store                     "horovod"
+    --conv-layout                  "NHWC"
+    --batchnorm-layout             "NHWC"
+    --pooling-layout               "NHWC"
+    --input-layout                 "NHWC"
+    --use-dali
+    --dali-prefetch-queue          "3"
+    --dali-nvjpeg-memory-padding   "256"
+    --image-shape                  "4,224,224"
+    --fuse-bn-add-relu             "1"
+    --fuse-bn-relu                 "1"
+    --force-tensor-core            "1"
+    --conv-algo                    "1"
+    --data-train                   "$TmpDataDir/train.rec"
+    --data-train-idx               "$TmpDataDir/train.idx"
+    --data-val                     "$TmpDataDir/val.rec"
+    --data-val-idx                 "$TmpDataDir/val.idx"
+    --dtype                        "float16"
+    --eval-period                  "4"
+    --eval-offset                  "1"
+    --accuracy-threshold           "0.759"
+    --disp-batches                 "5"
+    --num-epochs                   "90"
+    --batch-size                   "42"
+    --lr                           "13.0"
+    --lr-step-epochs               "1000"   # Don't touch
+    --lr-factor                    "0.1"    # Don't touch
+    --end_lr_ratio                 "0.0025"
+    --warmup-epochs                "36"
+    --min-random-area              "0.05"   # 0.05 in closed division
+    --max-random-area              "0.9"    # 1.0 in closed division
+    --min-random-aspect-ratio      "0.666667" # 0.75 in closed division
+    --max-random-aspect-ratio      "1.5"    # 1.333333 in closed division
+    --mom                          "0.96"   # 0.9 in closed division
+    --batchnorm-mom                "0.9"    # 0.9 in closed division
+    --batchnorm-eps                "1e-5"   # 1e-5 in closed division
+    --wd                           "5e-5"
+    --optimizer                    "sgd"    # Don't touch
+    --lr_range_min                 "1"      # Don't touch
+    --lr_range_max                 "1"      # Don't touch
+    --lr_decay_mode                "power"
+    --lr_decay                     "2.2"
+    --wd_range_min                 "1.0"    # Don't touch
+    --wd_range_max                 "1.0"    # Don't touch
+    --wd_warmup                    "True"   # Don't touch
+    --num_grps                     "1"      # Don't touch
+    --wd_step_epochs               "1000"   # Don't touch
+    --wd_factor                    "0.1"    # Don't touch
+    --wd_decay_mode                "power"
+    --wd_decay                     "-1"     # -1: use lr_decay
+    --num_cg_grps                  "1"      # Don't touch
+    --cg_range_min                 "1000"   # Don't touch
+    --cg_range_max                 "1000"   # Don't touch
+    --ds_lower_factor              "1.0"    # Don't touch
+    --ds_upper_factor              "1.0"    # Don't touch
+    --ds_fix_min                   "1"      # Don't touch
+    --ds_fix_max                   "1"      # Don't touch
+    --smooth_alpha                 "0.1"    # label smoothing parameter
+    --no_augument_epoch            "85"     # num_epochs or larger in closed division
+    --decay_after_warmup           "True"   # "True" in closed division
+    --seed                         "_SEED_" # add rank number at train_imagenet.py
+    --weight_seed                  "_SEED_" # seed for weight initialization. Set the same value to all ranks
+    --bias_wd                      "False"  # "False" in closed division
+    --smooth_decay                 "True"   # "True" in closed division
+
+    --use-new-cval                 "False"  # "False" in closed division
+    --min-random-area-2            "0.999"  # Don't touch
+    --max-random-area-2            "1.0"    # Don't touch
+    --min-random-aspect-ratio-2    "0.999"  # Don't touch
+    --max-random-aspect-ratio-2    "1.001"  # Don't touch
+
+    --decay_steps                  "780"
+    --bn_lr_decay                  "True"   # "True" in closed division
+)
+
+UseProf=0
+
+    export MXNET_UPDATE_ON_KVSTORE=0
+    export MXNET_EXEC_ENABLE_ADDTO=1
+    export MXNET_USE_TENSORRT=0
+    export MXNET_GPU_WORKER_NTHREADS=1
+    export MXNET_GPU_COPY_NTHREADS=1
+    export MXNET_CUDNN_AUTOTUNE_DEFAULT=0
+    export MXNET_OPTIMIZER_AGGREGATION_SIZE=55
+
+    export MXNET_L2_NORM_NUM_BLOCKS=2048 #default
+    export MXNET_L2_NORM_NUM_THREADS=128 #default
+
+# for NCCL params
+    export NCCL_BUFFSIZE=2097152
+    export NCCL_LL_THRESHOLD=1024
+    export NCCL_MAX_NRINGS=16
+    export NCCL_MIN_NRINGS=4
+    export NCCL_NET_GDR_READ=1
+
+# HOROVOD params
+    export HOROVOD_CYCLE_TIME=0.2
+    export HOROVOD_TWO_STAGE_LOOP=1
+    export HOROVOD_ALLREDUCE_MODE=1 # 1: 2-stage allreduce
+    export HOROVOD_FIXED_PAYLOAD=161
+    export HOROVOD_MULTIPLE_TRANSFER_MODE=1
+    export HOROVOD_CUBIC_TRANSFER_MODE=1
+    export HOROVOD_QUADRATIC_TRANSFER_MODE=0
+    export HOROVOD_FIXED_TRANSFERSIZE=3
+    export HOROVOD_MULTIPLE_NCCL_STREAM=0
+    export HOROVOD_TRIPLE_STREAMS4ALLREDUCE=1
+
+# FJSGD params
+    export USE_FJSGD_LARS_ACTIVE=1
+    export USE_FJSGD_LARC_SCALE_ACTIVE=0
+    export USE_FJSGD_LARC_CLIP_ACTIVE=0
+    export USE_FJSGD_LARC_ETA=0.0025        # 0.001 in closed division
+    export USE_ZERO_BN_DECAY=0
+    export USE_ZERO_GAMMA_INIT=0
+
+# FJSGD params for debug
+    export PRINT_FJSGD_VALUES=0
+
+    export HOROVOD_PREPARE=1
+
+    export MLPERF_SUBMISSION_DIVISION="open" # open or closed
+
+# End of file

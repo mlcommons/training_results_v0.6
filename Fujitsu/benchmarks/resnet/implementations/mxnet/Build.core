@@ -1,0 +1,41 @@
+#!/bin/bash
+# Copyright FUJITSU LIMITED 2019
+
+if [ $# -lt 1 ] ; then
+    echo "usage: $0 mode [numThread]" >&2
+    echo "mode is debug or prod" >&2
+    exit 1
+fi
+
+Mode="$1" && shift
+
+NumThread=40
+if [ -z "$TMPDIR" ] ; then
+  NumThread=10
+fi
+test $# -gt 0 && NumThread="$1" && shift
+
+export LANG=C
+
+. setenv || exit
+
+# make clean
+
+pip install --force --no-cache-dir numpy==1.15.2
+pip install --extra-index-url https://developer.download.nvidia.com/compute/redist/cuda/9.0 nvidia-dali==0.6.1
+pip install --no-cache-dir https://github.com/mlperf/training/archive/6289993e1e9f0f5c4534336df83ff199bd0cdb75.zip#subdirectory=compliance
+
+# for protoc in $HOME/MXNet/nvidia-mxnet/deps/bin
+export LD_LIBRARY_PATH=$HOME/MXNet/nvidia-mxnet/deps/lib:$LD_LIBRARY_PATH
+
+if [ "$Mode" = debug ] ; then
+    make -j $NumThread DEBUG=1 || exit
+else
+    make -j $NumThread || exit
+fi
+
+cd python
+pip install --no-cache-dir -e .
+
+# End of file
+

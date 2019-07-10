@@ -1,0 +1,34 @@
+20,22c20,22
+<         "http://data.statmt.org/wmt18/translation-task/training-parallel-nc-v13.tgz",  # pylint: disable=line-too-long
+<         ("training-parallel-nc-v13/news-commentary-v13.de-en.en",
+<          "training-parallel-nc-v13/news-commentary-v13.de-en.de")
+---
+>         "http://data.statmt.org/wmt17/translation-task/training-parallel-nc-v12.tgz",  # pylint: disable=line-too-long
+>         ("training/news-commentary-v12.de-en.en",
+>          "training/news-commentary-v12.de-en.de")
+32a33,38
+> #_ENDE_TEST_DATASETS = [
+> #    [
+> #        "http://data.statmt.org/wmt17/translation-task/dev.tgz",
+> #        ("dev/newstest2013.en", "dev/newstest2013.de")
+> #    ],
+> #]
+33a40,43
+>     #[
+>     #    "http://www.statmt.org/wmt14/submissions.tgz",  # pylint: disable=line-too-long
+>     #    ("wmt14-data/txt/sources/newstest2014-deen-src.en", "wmt14-data/txt/references/newstest2014-deen-ref.de")
+>     #],
+35,36c45,46
+<         "http://data.statmt.org/wmt17/translation-task/dev.tgz",
+<         ("dev/newstest2013.en", "dev/newstest2013.de")
+---
+>         "http://www.statmt.org/wmt14/test-full.tgz",  # pylint: disable=line-too-long
+>         ("test-full/newstest2014-deen-src.en.sgm", "test-full/newstest2014-deen-ref.de.sgm")
+114a125,126
+>     #return 128
+>     #return 64
+126a139,140
+>     #return 128
+>     #return 64
+
+

@@ -1,0 +1,21 @@
+PYTHONPATH=.:/tmp/code_dir-resnet_code_1558515181/staging/models/rough/transformer/data_generators/:/tmp/code_dir-resnet_code_1558515181/staging/models/rough/:$PYTHONPATH python3 resnet_main.py --cache_decoded_image=True \
+--data_dir=gs://mlperf-euw4/garden-imgnet/imagenet/combined \
+--enable_lars=True \
+--eval_batch_size=16384 \
+--iterations_per_loop=313 \
+--label_smoothing=0.1 \
+--mode=in_memory_eval \
+--model_dir=gs://mlsh_test/dev/assets/model_dir-resnet_model_dir_1558515181 \
+--num_cores=128 \
+--num_prefetch_threads=16 \
+--prefetch_depth_auto_tune=True \
+--resnet_depth=50 \
+--skip_host_call=True \
+--steps_per_eval=313 \
+--stop_threshold=0.759 \
+--tpu=TEST_TPU_1558515196.6 \
+--train_batch_size=16384 \
+--train_steps=5634 \
+--use_async_checkpointing=True \
+--use_train_runner=True \
+--weight_decay=0.0002

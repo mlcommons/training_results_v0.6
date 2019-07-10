@@ -1,0 +1,71 @@
+20d19
+< from tensor2tensor.utils import mlperf_log
+139,147d137
+<   # Check if is training or eval, ref: train_data_filenames().
+<   if num_shards > 0:
+<     if "-train" in output_filenames[0]:
+<       tag = "train"
+<     elif "-dev" in output_filenames[0]:
+<       tag = "eval"
+<     else:
+<       tag = "other"
+< 
+169,176d158
+<   if num_shards > 0:
+<     if tag == "train":
+<       mlperf_log.transformer_print(
+<           key=mlperf_log.PREPROC_NUM_TRAIN_EXAMPLES, value=counter)
+<     elif tag == "eval":
+<       mlperf_log.transformer_print(
+<           key=mlperf_log.PREPROC_NUM_EVAL_EXAMPLES, value=counter)
+< 
+477d458
+<   mlperf_log.transformer_print(key=mlperf_log.INPUT_ORDER)
+484c465
+<   random.shuffle(records)
+---
+>   random.shuffle(records)  # comment out when generating decoding dataset
+507c488
+<   def __init__(self, first_sequence, spacing=2):
+---
+>   def __init__(self, first_sequence, spacing=0):
+519a501,503
+>   def actual_len(self):
+>     return len(self._ids)
+> 
+536c520
+<   def __init__(self, first_sequence_pair, spacing=2):
+---
+>   def __init__(self, first_sequence_pair, spacing=0):
+543a528,531
+>   def actual_len(self):
+>     #return max(self._inputs.actual_len(), self._targets.actual_len())
+>     return self._inputs.actual_len()
+> 
+560c548
+<                   spacing=2,
+---
+>                   spacing=0,
+605a594,595
+>   per_example_len = []
+>   packed_example_len = []
+608a599,603
+>     if has_inputs:
+>       #per_example_len.append(max(len(x[0]), len(x[1])))
+>       per_example_len.append(len(x[0]))
+>     else:
+>       per_example_len.append(len(x))
+616a612,614
+>     x_length = len(x[0]) if has_inputs else len(x)
+>     if x_length > 80:
+>       continue
+623a622
+>         packed_example_len.append(combined[0].actual_len())
+627a627
+>     packed_example_len.append(c.actual_len())
+628a629,632
+>   print(*per_example_len)
+>   print('\n')
+>   print(*packed_example_len)
+>   print('\n')
+

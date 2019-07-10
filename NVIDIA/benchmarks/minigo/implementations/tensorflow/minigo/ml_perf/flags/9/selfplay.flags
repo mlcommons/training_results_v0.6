@@ -1,0 +1,17 @@
+# selfplay.flags: Flags for selfplay.
+
+# This flagfile also serves as the base for the boostrap & eval stages of
+# the RL loop.
+
+# we are using 2 processes per GPU, so num_games*num_gpu*2 should be 4096
+# --num_gpu=8
+--num_games=256
+--num_readouts=240
+--value_init_penalty=0.2
+--holdout_pct=0.03
+--disable_resign_pct=0.1
+--resign_threshold=-0.99
+
+# Device-specific selfplay flags.
+--parallel_games=128
+--virtual_losses=8

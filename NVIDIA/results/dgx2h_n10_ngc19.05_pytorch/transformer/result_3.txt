@@ -1,0 +1,1208 @@
+Beginning trial 4 of 5
+Gathering sys log on circe-n029
+:::MLL 1561428199.047 submission_benchmark: {"value": "transformer", "metadata": {"file": "mlperf_log_utils.py", "lineno": 225}}
+:::MLL 1561428199.048 submission_org: {"value": "NVIDIA", "metadata": {"file": "mlperf_log_utils.py", "lineno": 230}}
+WARNING: Log validation: Key "submission_division" is not in known transformer keys.
+:::MLL 1561428199.049 submission_division: {"value": "closed", "metadata": {"file": "mlperf_log_utils.py", "lineno": 234}}
+:::MLL 1561428199.050 submission_status: {"value": "onprem", "metadata": {"file": "mlperf_log_utils.py", "lineno": 238}}
+:::MLL 1561428199.051 submission_platform: {"value": "10xNVIDIA DGX-2H", "metadata": {"file": "mlperf_log_utils.py", "lineno": 242}}
+:::MLL 1561428199.051 submission_entry: {"value": "{'hardware': 'NVIDIA DGX-2H', 'framework': 'PyTorch NVIDIA Release 19.05', 'power': 'N/A', 'notes': 'N/A', 'interconnect': 'InfiniBand 100 Gb/sec (4X EDR)', 'os': 'Ubuntu 18.04.1 LTS / NVIDIA DGX Server 4.0.4 4.0.5', 'libraries': \"{'container_base': 'Ubuntu-16.04', 'openmpi_version': '3.1.3', 'mofed_version': '4.4-2.0.7', 'cuda_version': '10.1.163', 'cuda_driver_version': '418.67', 'nccl_version': '2.4.6', 'cudnn_version': '7.6.0.64', 'cublas_version': '10.2.0.163', 'trt_version': '5.1.5.0', 'dali_version': '0.9.1'}\", 'compilers': 'gcc (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609', 'nodes': \"{'num_nodes': '10', 'cpu': '2x Intel(R) Xeon(R) Platinum 8174 CPU @ 3.10GHz', 'num_cores': '48', 'num_vcpus': '96', 'accelerator': 'Tesla V100-SXM3-32GB-H', 'num_accelerators': '16', 'sys_mem_size': '1510 GB', 'sys_storage_type': 'NVMe SSD', 'sys_storage_size': '2x 894.3G + 8x 3.5T', 'cpu_accel_interconnect': 'UPI', 'network_card': 'Mellanox Technologies MT27800 Family [ConnectX-5]', 'num_network_cards': '10', 'notes': ''}\"}", "metadata": {"file": "mlperf_log_utils.py", "lineno": 246}}
+:::MLL 1561428199.052 submission_poc_name: {"value": "Paulius Micikevicius", "metadata": {"file": "mlperf_log_utils.py", "lineno": 250}}
+:::MLL 1561428199.053 submission_poc_email: {"value": "pauliusm@nvidia.com", "metadata": {"file": "mlperf_log_utils.py", "lineno": 254}}
+Clearing caches
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+:::MLL 1561428195.673 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428204.039 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428201.568 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428190.853 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428200.649 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428201.443 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428201.452 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428199.725 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428201.474 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+:::MLL 1561428201.350 cache_clear: {"value": true, "metadata": {"file": "<string>", "lineno": 1}}
+Launching on node circe-n029
++ pids+=($!)
++ set +x
+Launching on node circe-n030
++ pids+=($!)
++ set +x
+Launching on node circe-n031
++ pids+=($!)
++ set +x
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
+Launching on node circe-n032
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n030
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n029
++ pids+=($!)
++ set +x
+Launching on node circe-n033
++ srun --mem=0 -N 1 -n 1 -w circe-n030 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=1 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
++ srun --mem=0 -N 1 -n 1 -w circe-n029 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=0 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n031
++ pids+=($!)
++ set +x
+Launching on node circe-n034
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n032
++ srun --mem=0 -N 1 -n 1 -w circe-n031 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=2 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
++ pids+=($!)
++ set +x
+Launching on node circe-n035
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n033
++ srun --mem=0 -N 1 -n 1 -w circe-n032 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=3 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
++ pids+=($!)
++ set +x
+Launching on node circe-n036
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n034
++ srun --mem=0 -N 1 -n 1 -w circe-n033 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=4 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
++ pids+=($!)
++ set +x
+Launching on node circe-n095
++ srun --mem=0 -N 1 -n 1 -w circe-n034 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=5 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n035
++ pids+=($!)
++ set +x
+Launching on node circe-n096
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n036
++ srun --mem=0 -N 1 -n 1 -w circe-n035 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=6 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
++ pids+=($!)
++ set +x
++ srun --mem=0 -N 1 -n 1 -w circe-n036 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=7 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n095
+++ eval echo srun --mem=0 -N 1 -n 1 -w '$hostn'
++++ echo srun --mem=0 -N 1 -n 1 -w circe-n096
++ srun --mem=0 -N 1 -n 1 -w circe-n095 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=8 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
++ srun --mem=0 -N 1 -n 1 -w circe-n096 docker exec -e DGXSYSTEM=DGX2_multi_10x16x3840 -e 'MULTI_NODE= --nnodes=10 --node_rank=9 --master_addr=10.0.1.29 --master_port=4827' -e 'SEED=    15671236' -e SLURM_JOB_ID=120493 -e SLURM_NTASKS_PER_NODE=16 -e SLURM_NNODES=10 -e MODE=TRAIN cont_120493 ./run_and_time.sh
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=0 --master_addr=10.0.1.29 --master_port=4827
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=4 --master_addr=10.0.1.29 --master_port=4827
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=1 --master_addr=10.0.1.29 --master_port=4827
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=5 --master_addr=10.0.1.29 --master_port=4827
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428201
++++ date '+%Y-%m-%d %r'
+++ START_FMT='2019-06-25 02:03:21 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:21 AM'
+STARTING TIMING RUN AT 2019-06-25 02:03:21 AM
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=4 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=2 --master_addr=10.0.1.29 --master_port=4827
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=7 --master_addr=10.0.1.29 --master_port=4827
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428191
++++ date '+%Y-%m-%d %r'
+STARTING TIMING RUN AT 2019-06-25 02:03:11 AM
+++ START_FMT='2019-06-25 02:03:11 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:11 AM'
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=5 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428201
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=6 --master_addr=10.0.1.29 --master_port=4827
++++ date '+%Y-%m-%d %r'
+STARTING TIMING RUN AT 2019-06-25 02:03:21 AM
+++ START_FMT='2019-06-25 02:03:21 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:21 AM'
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=1 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428201
++++ date '+%Y-%m-%d %r'
+STARTING TIMING RUN AT 2019-06-25 02:03:21 AM
+++ START_FMT='2019-06-25 02:03:21 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:21 AM'
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=2 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428200
++++ date '+%Y-%m-%d %r'
+++ START_FMT='2019-06-25 02:03:20 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:20 AM'
+STARTING TIMING RUN AT 2019-06-25 02:03:20 AM
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=7 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428201
++++ date '+%Y-%m-%d %r'
+++ START_FMT='2019-06-25 02:03:21 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:21 AM'
+STARTING TIMING RUN AT 2019-06-25 02:03:21 AM
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=6 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=9 --master_addr=10.0.1.29 --master_port=4827
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=8 --master_addr=10.0.1.29 --master_port=4827
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428196
++++ date '+%Y-%m-%d %r'
+STARTING TIMING RUN AT 2019-06-25 02:03:16 AM
+++ START_FMT='2019-06-25 02:03:16 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:16 AM'
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=8 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428204
++++ date '+%Y-%m-%d %r'
+STARTING TIMING RUN AT 2019-06-25 02:03:24 AM
+++ START_FMT='2019-06-25 02:03:24 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:24 AM'
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=9 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
+Run vars: id 120493 gpus 16 mparams  --nnodes=10 --node_rank=3 --master_addr=10.0.1.29 --master_port=4827
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428201
++++ date '+%Y-%m-%d %r'
+++ START_FMT='2019-06-25 02:03:21 AM'
+STARTING TIMING RUN AT 2019-06-25 02:03:21 AM
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:21 AM'
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=3 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
++ SEED='    15671236'
++ MAX_TOKENS=3840
++ DATASET_DIR=/data
++ MODE=TRAIN
++ NUMEPOCHS=30
++ case "$MODE" in
++ source run_training.sh
++++ date +%s
+++ START=1561428200
++++ date '+%Y-%m-%d %r'
+STARTING TIMING RUN AT 2019-06-25 02:03:20 AM
+++ START_FMT='2019-06-25 02:03:20 AM'
+++ echo 'STARTING TIMING RUN AT 2019-06-25 02:03:20 AM'
+++ [[ 16 -ne 1 ]]
+++ DISTRIBUTED_INIT_METHOD='--distributed-init-method env://'
+++ export DGXSYSTEM
+++ export SLURM_NTASKS_PER_NODE
+++ export SLURM_NNODES
+++ export MLPERF_HOST_OS
+++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 24 --nproc_per_node 16 --nnodes=10 --node_rank=0 --master_addr=10.0.1.29 --master_port=4827 train.py /data --seed 15671236 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 550 --lr 1.732e-3 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 3840 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --seq-len-multiple 2 --softmax-type fast_fill --source_lang en --target_lang de --bucket_growth_factor 1.035 --batching_scheme v0p5_better --batch_multiple_strategy dynamic --fast-xentropy --max-len-a 1 --max-len-b 50 --lenpen 0.6 --distributed-init-method env:// --enable-parallel-backward-allred-opt --parallel-backward-allred-opt-threshold 147566182 --parallel-backward-allred-cuda-nstreams 2 --max-source-positions 80 --max-target-positions 80 --adam-betas '(0.86,0.92)'
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 152
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 153
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 155
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 144
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 145
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 151
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 157
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 147
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 158
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 12
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 4
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 150
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 10
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 159
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 156
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 154
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 13
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 5
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 14
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 149
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 146
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 148
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 6
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 11
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 2
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 8
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 9
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 0
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 1
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 3
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 135
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 142
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 15
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 7
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 129
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 128
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 138
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 136
+:::MLL 1561428211.920 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 130
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 132
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 140
+:::MLL 1561428211.923 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 131
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 137
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 133
+| distributed init done!
+:::MLL 1561428207.047 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 134
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 141
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 139
+| distributed init done!
+:::MLL 1561428211.951 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.951 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 143
+| distributed init done!
+:::MLL 1561428207.083 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.084 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.084 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.084 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.084 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.084 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.084 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.085 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.085 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.086 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.088 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.090 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.090 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.090 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428207.101 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 67
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 71
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 68
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 76
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 79
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 65
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 66
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 74
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 77
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 75
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 64
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 69
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 78
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 73
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 72
+| distributed init done!
+:::MLL 1561428212.769 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.769 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.773 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.775 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.776 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.776 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 90
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 92
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 95
+| distributed init done!
+:::MLL 1561428212.781 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.783 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.783 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.783 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.783 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.783 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.787 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.787 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 82
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 93
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 85
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 88
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 94
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 87
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 86
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 89
+| distributed init done!
+:::MLL 1561428212.795 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 81
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 84
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 91
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 83
+| distributed init (rank 0): env://
+| distributed init done!
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 80
+| distributed init done!
+:::MLL 1561428202.425 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.425 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.427 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 59
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 62
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 51
+:::MLL 1561428202.443 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 63
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 53
+| distributed init done!
+:::MLL 1561428202.444 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 58
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 60
+| distributed init done!
+:::MLL 1561428202.446 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.446 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.446 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.449 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.450 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.451 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 98
+:::MLL 1561428202.452 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 56
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 55
+| distributed init done!
+:::MLL 1561428202.452 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+:::MLL 1561428202.453 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 97
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 48
+:::MLL 1561428202.454 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428202.454 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 104
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 109
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 105
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 107
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 57
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 52
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 54
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 50
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 49
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 102
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 110
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 99
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 100
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 101
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 106
+:::MLL 1561428213.227 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.227 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 108
+:::MLL 1561428213.229 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.229 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 70
+:::MLL 1561428213.230 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 61
+:::MLL 1561428213.044 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.231 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.231 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.045 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 111
+:::MLL 1561428213.048 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.048 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.048 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.236 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.237 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.238 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 103
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 96
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 116
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 118
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 121
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 123
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 127
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 113
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 125
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 115
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 114
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 120
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 124
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 112
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 122
+:::MLL 1561428212.912 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 126
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 23
+| distributed init done!
+:::MLL 1561428213.285 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.286 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.286 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.286 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 30
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 24
+| distributed init done!
+| distributed init done!
+:::MLL 1561428213.287 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.287 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 16
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 119
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 20
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 26
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 19
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 32
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 28
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 17
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 18
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 27
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 39
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 22
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 21
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 29
+:::MLL 1561428213.111 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.111 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.111 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.111 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.112 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.112 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.112 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+:::MLL 1561428213.112 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.112 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.112 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.112 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 40
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 38
+| distributed init done!
+:::MLL 1561428211.378 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.378 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.378 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.378 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 25
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 35
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 31
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 117
+:::MLL 1561428211.385 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.386 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.386 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.387 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 33
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 41
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 45
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 47
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 34
+| distributed init done!
+| distributed init done!
+:::MLL 1561428211.388 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 36
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 37
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 42
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 44
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 43
+| distributed init done!
+| distributed init done!
+:::MLL 1561428211.392 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.393 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.393 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.397 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.397 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.126 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.119 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.400 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.129 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.122 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.131 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.133 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 10.0.1.29, MASTER_PORT: 4827, WORLD_SIZE: 160, RANK: 46
+| distributed init done!
+:::MLL 1561428213.137 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428211.409 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.138 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.138 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.131 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.140 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.132 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.141 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.142 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.142 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.144 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.144 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.144 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.146 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.138 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.149 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.147 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.147 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.147 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.147 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.147 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.149 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.149 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.149 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.150 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.150 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428213.157 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| initialized host circe-n029 as rank 0 and device id 0
+:::MLL 1561428216.367 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.367 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.909 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.910 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.910 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.371 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.375 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.375 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.914 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.376 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.377 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.378 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.917 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.917 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.379 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.919 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.920 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.380 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.381 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.381 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.921 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.922 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.383 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.384 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.384 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428216.384 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.924 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+:::MLL 1561428212.927 init_start: {"value": null, "metadata": {"file": "train.py", "lineno": 57}}
+Namespace(adam_betas='(0.86,0.92)', adam_eps=1e-09, adaptive_softmax_cutoff=None, arch='transformer_wmt_en_de_big_t2t', attention_dropout=0.1, batch_multiple_strategy='dynamic', batching_scheme='v0p5_better', beam=4, bucket_growth_factor=1.035, clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', data='/data', dataloader_num_workers=1, decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, device_id=0, distributed_backend='nccl', distributed_init_method='env://', distributed_port=-1, distributed_rank=0, distributed_world_size=160, dropout=0.1, enable_dataloader_pin_memory=False, enable_parallel_backward_allred_opt=True, enable_parallel_backward_allred_opt_correctness_check=False, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=True, fast_xentropy=True, fp16=True, fuse_dropout_add=False, fuse_relu_dropout=False, gen_subset='test', ignore_case=True, keep_interval_updates=-1, label_smoothing=0.1, left_pad_source='True', left_pad_target='False', lenpen=0.6, local_rank=0, log_format=None, log_interval=1000, log_translations=False, lr=[0.001732], lr_scheduler='inverse_sqrt', lr_shrink=0.1, max_epoch=30, max_len_a=1.0, max_len_b=50, max_sentences=None, max_sentences_valid=None, max_source_positions=80, max_target_positions=80, max_tokens=3840, max_update=0, min_len=1, min_loss_scale=0.0001, min_lr=0.0, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_epoch_checkpoints=False, no_progress_bar=False, no_save=True, no_token_positional_embeddings=False, num_shards=1, online_eval=False, optimizer='adam', parallel_backward_allred_cuda_nstreams=2, parallel_backward_allred_opt_threshold=147566182, path=None, prefix_size=0, print_alignment=False, profile=None, quiet=False, raw_text=False, relu_dropout=0.1, remove_bpe=None, replace_unk=None, restore_file='checkpoint_last.pt', sampling=False, sampling_temperature=1, sampling_topk=-1, save_dir='checkpoints', save_interval=1, save_interval_updates=0, score_reference=False, seed=15671236, sentence_avg=False, seq_len_multiple=2, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, softmax_type='fast_fill', source_lang='en', target_bleu=25.0, target_lang='de', task='translation', train_subset='train', unkpen=0, unnormalized=False, update_freq=[1], valid_subset='valid', validate_interval=1, warmup_init_lr=0.0, warmup_updates=550, weight_decay=0.0)
+:::MLL 1561428269.326 global_batch_size: {"value": 614400, "metadata": {"file": "train.py", "lineno": 74}}
+:::MLL 1561428269.327 opt_name: {"value": "adam", "metadata": {"file": "train.py", "lineno": 75}}
+:::MLL 1561428269.327 opt_base_learning_rate: {"value": 0.001732, "metadata": {"file": "train.py", "lineno": 77}}
+:::MLL 1561428269.327 opt_learning_rate_warmup_steps: {"value": 550, "metadata": {"file": "train.py", "lineno": 78}}
+:::MLL 1561428269.327 max_sequence_length: {"value": 80, "metadata": {"file": "train.py", "lineno": 80}}
+:::MLL 1561428269.327 opt_adam_beta_1: {"value": 0.86, "metadata": {"file": "train.py", "lineno": 81}}
+:::MLL 1561428269.328 opt_adam_beta_2: {"value": 0.92, "metadata": {"file": "train.py", "lineno": 82}}
+:::MLL 1561428269.328 opt_adam_epsilon: {"value": 1e-09, "metadata": {"file": "train.py", "lineno": 83}}
+| [en] dictionary: 33712 types
+| [de] dictionary: 33712 types
+| model transformer_wmt_en_de_big_t2t, criterion LabelSmoothedCrossEntropyCriterion
+| num. model params: 210808832
+| parallel all-reduce ENABLED. all-reduce threshold: 147566182
+| # of parallel all-reduce cuda streams: 2
+| training on 160 GPUs
+| max tokens per GPU = 3840 and max sentences per GPU = None
+:::MLL 1561428308.343 init_stop: {"value": null, "metadata": {"file": "train.py", "lineno": 140}}
+:::MLL 1561428308.343 run_start: {"value": null, "metadata": {"file": "train.py", "lineno": 142}}
+filename: /data/train.en-de.en
+raw_text: False
+| /data train 4590101 examples
+filename: /data/train1.en-de.en
+raw_text: False
+filename: /data/train1.de-en.en
+raw_text: False
+srcline: tensor([  855,     3,    45,    96,   156,    10,  2688,   177,  5596,   163,     5,  9336, 14909, 12630,   527,   297, 15690,    70,     3,    68,    17,   927,    45,   482,   151,   283,  3551,  2091,     7,     5,   546,    24, 26623,  1617,  5440,    86,    15,  1524,  3522,   434,     3,   264,   199,   182,    86,    15,  4489,  8360,    69,   114,     5,   253,    41,    69,  3823,   203,     8,     5,  9336, 14909, 12630,   527,     4,     2])
+| Sentences are being padded to multiples of: 2
+filename: /data/test.en-de.en
+raw_text: False
+| /data test 3003 examples
+srcline: tensor([ 7549,  4344,    64, 32364,  1259,    20, 13504,  8959,  3868,     2])
+| Sentences are being padded to multiples of: 2
+filename: /data/test1.en-de.en
+raw_text: False
+filename: /data/test1.de-en.en
+raw_text: False
+:::MLL 1561428309.455 block_start: {"value": null, "metadata": {"first_epoch_num": 1, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1561428309.455 epoch_start: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 163}}
+generated 39110 batches in 2.133018s
+got epoch iterator 2.1334569454193115
+| WARNING: overflow detected, setting loss scale to: 64.0
+| WARNING: overflow detected, setting loss scale to: 32.0
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001 | loss 10.413 | nll_loss 0.000 | ppl 1.00 | wps 5.4432e+06 | ups 3.8 | wpb 552655 | bsz 18176 | num_updates 242 | lr 0.00076208 | gnorm 65882.832 | clip 100% | oom 0 | loss_scale 16.000 | wall 64
+epoch time  24.88564133644104
+:::MLL 1561428336.499 epoch_stop: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 201}}
+:::MLL 1561428336.499 eval_start: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 547}}
+generated 376 batches in 0.000771s
+| Translated 24 sentences (671 tokens) in 1.1s (21.02 sentences/s, 587.58 tokens/s)
+| Generate test with beam=4: bleu_score=1.3037
+| Eval completed in: 2.12s
+:::MLL 1561428338.625 eval_stop: {"value": null, "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 658}}
+:::MLL 1561428338.628 eval_accuracy: {"value": "1.3036862947046757", "metadata": {"epoch_num": 1, "file": "train.py", "lineno": 211}}
+validation and scoring  2.1534857749938965
+:::MLL 1561428338.689 block_stop: {"value": null, "metadata": {"first_epoch_num": 1, "file": "train.py", "lineno": 226}}
+:::MLL 1561428338.689 block_start: {"value": null, "metadata": {"first_epoch_num": 2, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1561428338.690 epoch_start: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 163}}
+generated 39110 batches in 2.146749s
+got epoch iterator 2.214160680770874
+| WARNING: overflow detected, setting loss scale to: 8.0
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 002 | loss 6.609 | nll_loss 0.000 | ppl 1.00 | wps 5.50104e+06 | ups 8.4 | wpb 552570 | bsz 18169 | num_updates 485 | lr 0.00152731 | gnorm 44435.944 | clip 100% | oom 0 | loss_scale 4.000 | wall 93
+epoch time  24.623109102249146
+:::MLL 1561428365.549 epoch_stop: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 201}}
+:::MLL 1561428365.550 eval_start: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 547}}
+generated 376 batches in 0.000782s
+| Translated 24 sentences (566 tokens) in 1.0s (24.84 sentences/s, 585.71 tokens/s)
+| Generate test with beam=4: bleu_score=17.1976
+| Eval completed in: 1.75s
+:::MLL 1561428367.304 eval_stop: {"value": null, "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 658}}
+:::MLL 1561428367.307 eval_accuracy: {"value": "17.197608947753906", "metadata": {"epoch_num": 2, "file": "train.py", "lineno": 211}}
+validation and scoring  1.779754877090454
+:::MLL 1561428367.366 block_stop: {"value": null, "metadata": {"first_epoch_num": 2, "file": "train.py", "lineno": 226}}
+:::MLL 1561428367.366 block_start: {"value": null, "metadata": {"first_epoch_num": 3, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1561428367.367 epoch_start: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 163}}
+generated 39110 batches in 2.243644s
+got epoch iterator 2.3144965171813965
+| WARNING: overflow detected, setting loss scale to: 2.0
+| epoch 003 | loss 5.136 | nll_loss 0.000 | ppl 1.00 | wps 5.5218e+06 | ups 8.5 | wpb 552573 | bsz 18168 | num_updates 729 | lr 0.00150441 | gnorm 30672.494 | clip 100% | oom 0 | loss_scale 2.000 | wall 122
+epoch time  24.59611463546753
+:::MLL 1561428394.284 epoch_stop: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 201}}
+:::MLL 1561428394.285 eval_start: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 547}}
+generated 376 batches in 0.000754s
+| Translated 24 sentences (645 tokens) in 0.8s (28.62 sentences/s, 769.11 tokens/s)
+| Generate test with beam=4: bleu_score=22.1543
+| Eval completed in: 1.55s
+:::MLL 1561428395.841 eval_stop: {"value": null, "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 658}}
+:::MLL 1561428395.844 eval_accuracy: {"value": "22.154326736927032", "metadata": {"epoch_num": 3, "file": "train.py", "lineno": 211}}
+validation and scoring  1.566805124282837
+:::MLL 1561428395.909 block_stop: {"value": null, "metadata": {"first_epoch_num": 3, "file": "train.py", "lineno": 226}}
+:::MLL 1561428395.910 block_start: {"value": null, "metadata": {"first_epoch_num": 4, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1561428395.910 epoch_start: {"value": null, "metadata": {"epoch_num": 4, "file": "train.py", "lineno": 163}}
+generated 39110 batches in 2.232374s
+got epoch iterator 2.303185224533081
+| epoch 004 | loss 4.664 | nll_loss 0.000 | ppl 1.00 | wps 5.54747e+06 | ups 8.6 | wpb 552617 | bsz 18181 | num_updates 974 | lr 0.00130152 | gnorm 23234.999 | clip 100% | oom 0 | loss_scale 2.000 | wall 150
+epoch time  24.54497241973877
+:::MLL 1561428422.780 epoch_stop: {"value": null, "metadata": {"epoch_num": 4, "file": "train.py", "lineno": 201}}
+:::MLL 1561428422.781 eval_start: {"value": null, "metadata": {"epoch_num": 4, "file": "train.py", "lineno": 547}}
+generated 376 batches in 0.000757s
+| Translated 24 sentences (624 tokens) in 0.8s (29.42 sentences/s, 764.84 tokens/s)
+| Generate test with beam=4: bleu_score=24.5318
+| Eval completed in: 1.52s
+:::MLL 1561428424.310 eval_stop: {"value": null, "metadata": {"epoch_num": 4, "file": "train.py", "lineno": 658}}
+:::MLL 1561428424.313 eval_accuracy: {"value": "24.531757831573486", "metadata": {"epoch_num": 4, "file": "train.py", "lineno": 211}}
+validation and scoring  1.5549688339233398
+:::MLL 1561428424.376 block_stop: {"value": null, "metadata": {"first_epoch_num": 4, "file": "train.py", "lineno": 226}}
+:::MLL 1561428424.376 block_start: {"value": null, "metadata": {"first_epoch_num": 5, "epoch_count": 1, "file": "train.py", "lineno": 162}}
+:::MLL 1561428424.376 epoch_start: {"value": null, "metadata": {"epoch_num": 5, "file": "train.py", "lineno": 163}}
+generated 39110 batches in 2.267288s
+got epoch iterator 2.3394722938537598
+| epoch 005 | loss 4.457 | nll_loss 0.000 | ppl 1.00 | wps 5.54225e+06 | ups 8.6 | wpb 552617 | bsz 18181 | num_updates 1219 | lr 0.0011634 | gnorm 18744.558 | clip 100% | oom 0 | loss_scale 2.000 | wall 179
+epoch time  24.544307708740234
+:::MLL 1561428451.285 epoch_stop: {"value": null, "metadata": {"epoch_num": 5, "file": "train.py", "lineno": 201}}
+:::MLL 1561428451.285 eval_start: {"value": null, "metadata": {"epoch_num": 5, "file": "train.py", "lineno": 547}}
+generated 376 batches in 0.000815s
+| Translated 24 sentences (636 tokens) in 0.8s (28.75 sentences/s, 761.97 tokens/s)
+| Generate test with beam=4: bleu_score=25.5992
+| Eval completed in: 1.53s
+:::MLL 1561428452.816 eval_stop: {"value": null, "metadata": {"epoch_num": 5, "file": "train.py", "lineno": 658}}
+:::MLL 1561428452.819 eval_accuracy: {"value": "25.599220395088196", "metadata": {"epoch_num": 5, "file": "train.py", "lineno": 211}}
+validation and scoring  1.5589861869812012
+:::MLL 1561428452.885 block_stop: {"value": null, "metadata": {"first_epoch_num": 5, "file": "train.py", "lineno": 226}}
+:::MLL 1561428452.886 run_stop: {"value": null, "metadata": {"status": "success", "file": "train.py", "lineno": 231}}
+| done training in 178.2 seconds
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ ret_code=0
+++ sleep 3
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428465
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:45 AM
+RESULT,transformer,    15671236,265,,2019-06-25 02:03:20 AM
+++ END_FMT='2019-06-25 02:07:45 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:45 AM'
+++ RESULT=265
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,265,,2019-06-25 02:03:20 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428466
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:46 AM
+RESULT,transformer,    15671236,265,,2019-06-25 02:03:21 AM
+++ END_FMT='2019-06-25 02:07:46 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:46 AM'
+++ RESULT=265
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,265,,2019-06-25 02:03:21 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428462
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:42 AM
+RESULT,transformer,    15671236,266,,2019-06-25 02:03:16 AM
+++ END_FMT='2019-06-25 02:07:42 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:42 AM'
+++ RESULT=266
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,266,,2019-06-25 02:03:16 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428470
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:50 AM
+RESULT,transformer,    15671236,266,,2019-06-25 02:03:24 AM
+++ END_FMT='2019-06-25 02:07:50 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:50 AM'
+++ RESULT=266
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,266,,2019-06-25 02:03:24 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428457
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:37 AM
+RESULT,transformer,    15671236,266,,2019-06-25 02:03:11 AM
+++ END_FMT='2019-06-25 02:07:37 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:37 AM'
+++ RESULT=266
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,266,,2019-06-25 02:03:11 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428468
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:48 AM
+RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM
+++ END_FMT='2019-06-25 02:07:48 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:48 AM'
+++ RESULT=267
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428468
++++ date '+%Y-%m-%d %r'
+++ END_FMT='2019-06-25 02:07:48 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:48 AM'
+++ RESULT=267
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM'
++ set +x
+ENDING TIMING RUN AT 2019-06-25 02:07:48 AM
+RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428466
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:46 AM
+RESULT,transformer,    15671236,266,,2019-06-25 02:03:20 AM
+++ END_FMT='2019-06-25 02:07:46 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:46 AM'
+++ RESULT=266
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,266,,2019-06-25 02:03:20 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428468
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:48 AM
+RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM
+++ END_FMT='2019-06-25 02:07:48 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:48 AM'
+++ RESULT=267
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM'
++ set +x
+++ [[ 0 != 0 ]]
++++ date +%s
+++ END=1561428468
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-25 02:07:48 AM
+RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM
+++ END_FMT='2019-06-25 02:07:48 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-25 02:07:48 AM'
+++ RESULT=267
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,    15671236,267,,2019-06-25 02:03:21 AM'
++ set +x

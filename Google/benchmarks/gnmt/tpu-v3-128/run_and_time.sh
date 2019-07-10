@@ -1,0 +1,22 @@
+PYTHONPATH=.:/tmp/code_dir-nmt_code_1560235370/staging/models/rough/transformer/data_generators/:/tmp/code_dir-nmt_code_1560235370/staging/models/rough/:$PYTHONPATH python3 nmt.py --activation_dtype=bfloat16 \
+--batch_size=8192 \
+--data_dir=gs://mlperf-euw4/benchmark_data/nmt/gnmt/ \
+--decay_factor=0.5 \
+--decay_interval=241 \
+--decay_start=1924 \
+--decay_steps=4 \
+--infer_batch_size=4096 \
+--learning_rate=0.0045 \
+--max_train_epochs=10 \
+--mode=train_and_eval \
+--num_buckets=5 \
+--num_examples_per_epoch=3442299 \
+--num_infeed_workers=2 \
+--num_shards=128 \
+--num_shards_per_host=8 \
+--num_tpu_workers=16 \
+--out_dir=gs://mlsh_test/dev/assets/model_dir-nmt_model_dir_1560235370 \
+--tpu_name=TEST_TPU_1560235386.63 \
+--train_prefix=bucket_5_preprocessed_dataset_ \
+--use_tpu=true \
+--warmup_steps=200

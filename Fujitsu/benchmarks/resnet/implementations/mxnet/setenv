@@ -1,0 +1,34 @@
+#!/bin/bash
+# Copyright FUJITSU LIMITED 2019
+
+deactivate 2>/dev/null
+
+MyDir="$HOME/MXNet/nvidia-mxnet"
+
+export PATH="$HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$MyDir/deps/lib:$HOME/lib:$LD_LIBRARY_PATH"
+export CPATH="$HOME/include:$CPATH"
+
+source /etc/profile.d/modules.sh
+module purge
+
+GCC_HOME=/apps/gcc/7.3.0
+export PATH="$GCC_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$GCC_HOME/lib64:$GCC_HOME/lib:$LD_LIBRARY_PATH"
+export CPATH="$GCC_HOME/include:$CPATH"
+
+module load openmpi/2.1.6 \
+            python/3.6/3.6.5 \
+            cuda/9.2/9.2.148.1 \
+            cudnn/7.5/7.5.0
+
+export NCCL_HOME=${HOME}/work2/nccl/build
+export NCCL_ROOT_DIR=$NCCL_HOME
+export CPATH="$NCCL_HOME/include:$CPATH"
+export LD_LIBRARY_PATH="$NCCL_HOME/lib:$LD_LIBRARY_PATH"
+export LIBRARY_PATH="$NCCL_HOME/lib:$LIBRARY_PATH"
+
+## python-venv activate
+. $HOME/venv/bin/activate
+
+# End of file

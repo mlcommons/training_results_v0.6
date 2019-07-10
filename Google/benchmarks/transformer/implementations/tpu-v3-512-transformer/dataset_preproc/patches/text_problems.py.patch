@@ -1,0 +1,94 @@
+21d20
+< from tensor2tensor.layers import modalities
+23d21
+< from tensor2tensor.utils import mlperf_log
+50c48
+<         "shards": 100,
+---
+>         "shards": 256,
+53c51
+<         "shards": 1,
+---
+>         "shards": 256,
+242,246d239
+<     if dataset_split == problem.DatasetSplit.TRAIN:
+<       mlperf_log.transformer_print(key=mlperf_log.PREPROC_TOKENIZE_TRAINING)
+<     elif dataset_split == problem.DatasetSplit.EVAL:
+<       mlperf_log.transformer_print(key=mlperf_log.PREPROC_TOKENIZE_EVAL)
+< 
+268,271d260
+<   @property
+<   def already_shuffled(self):
+<     return False
+< 
+281c270
+<         data_dir, split["shards"], shuffled=self.already_shuffled))
+---
+>         data_dir, split["shards"], shuffled=False))
+304,305d292
+<     p.modality = {"targets": modalities.SymbolModality}
+<     p.vocab_size = {"targets": self._encoders["targets"].vocab_size}
+307,308c294,299
+<       p.modality["inputs"] = modalities.SymbolModality
+<       p.vocab_size["inputs"] = self._encoders["inputs"].vocab_size
+---
+>       source_vocab_size = self._encoders["inputs"].vocab_size
+>       p.input_modality = {
+>           "inputs": (registry.Modalities.SYMBOL, source_vocab_size)
+>       }
+>     target_vocab_size = self._encoders["targets"].vocab_size
+>     p.target_modality = (registry.Modalities.SYMBOL, target_vocab_size)
+312a304
+>       identity = (registry.Modalities.GENERIC, None)
+314,321c306,309
+<         p.modality["inputs_segmentation"] = modalities.IdentityModality
+<         p.modality["inputs_position"] = modalities.IdentityModality
+<         p.vocab_size["inputs_segmentation"] = None
+<         p.vocab_size["inputs_position"] = None
+<       p.modality["targets_segmentation"] = modalities.IdentityModality
+<       p.modality["targets_position"] = modalities.IdentityModality
+<       p.vocab_size["targets_segmentation"] = None
+<       p.vocab_size["targets_position"] = None
+---
+>         p.input_modality["inputs_segmentation"] = identity
+>         p.input_modality["inputs_position"] = identity
+>       p.input_modality["targets_segmentation"] = identity
+>       p.input_modality["targets_position"] = identity
+390,391c378,380
+<     p.modality["context"] = modalities.SymbolModality
+<     p.vocab_size["context"] = self._encoders["context"].vocab_size
+---
+>     source_vocab_size = self._encoders["context"].vocab_size
+>     p.input_modality["context"] = (registry.Modalities.SYMBOL,
+>                                    source_vocab_size)
+494,497c483,487
+<     p.modality = {"inputs": modalities.SymbolModality,
+<                   "targets": modalities.ClassLabelModality}
+<     p.vocab_size = {"inputs": self._encoders["inputs"].vocab_size,
+<                     "targets": self.num_classes}
+---
+>     source_vocab_size = self._encoders["inputs"].vocab_size
+>     p.input_modality = {
+>         "inputs": (registry.Modalities.SYMBOL, source_vocab_size)
+>     }
+>     p.target_modality = (registry.Modalities.CLASS_LABEL, self.num_classes)
+530a521
+>         inputs.append(text_encoder.EOS_ID)
+533d523
+<       inputs.append(text_encoder.EOS_ID)
+613a604
+>   per_decode_example_len = []
+619a611,619
+>     if has_inputs:
+>       per_decode_example_len.append(len(sample["inputs"]))
+>       #per_decode_example_len.append(max(len(sample["inputs"]), len(sample["targets"])))
+>       #print(len(sample["inputs"]))
+>       #print(sample["inputs"])
+>     else:
+>       per_decode_example_len.append(len(sample["targets"]))
+>       #print(len(sample["targets"]))
+>       #print(sample["targets"])
+620a621
+>   #print(*per_decode_example_len)
+
+

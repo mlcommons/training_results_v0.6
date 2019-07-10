@@ -1,0 +1,18 @@
+48,55c48
+<   if is_unicode(s):
+<     return s
+<   try:
+<     return to_unicode(s)
+<   except UnicodeDecodeError:
+<     res = to_unicode(s, ignore_errors=True)
+<     tf.logging.info("Ignoring Unicode error, outputting: %s" % res)
+<     return res
+---
+>   return s if is_unicode(s) else to_unicode(s)
+488a482,484
+> 
+>     #print(s)
+>     #print(self._tokens_to_subtoken_ids(tokenizer.encode(native_to_unicode(s))))
+1051a1048
+> 
+

@@ -1,0 +1,15 @@
+# train.flags: Flags for training.
+
+--flagfile=ml_perf/flags/9.mn/architecture.flags
+
+--shuffle_buffer_size=10000
+--filter_amount=0.5
+
+# Device specific hyperparameters re: batch size and LR schedules.
+--train_batch_size=8192
+--lr_rates=0.32
+--lr_rates=0.032
+--lr_rates=0.0032
+--lr_boundaries=12500
+--lr_boundaries=18750
+--l2_strength=0.0001

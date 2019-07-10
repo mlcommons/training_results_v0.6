@@ -1,0 +1,514 @@
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:56], run_start
+MLPerf: resnet [06/13/19 00:30:57], run_start
+MLPerf: resnet [06/13/19 00:30:57], input_batch_size: 256
+MLPerf: resnet [06/13/19 00:30:57], preproc_num_train_examples: 1281167
+MLPerf: resnet [06/13/19 00:30:57], run_set_random_seed:2019
+MLPerf: resnet [06/13/19 00:30:57], run_start
+MLPerf: resnet [06/13/19 00:30:57], input_crop_uses_bboxes: false
+MLPerf: resnet [06/13/19 00:30:57], input_distorted_crop: true
+MLPerf: resnet [06/13/19 00:30:57], input_random_flip: true
+MLPerf: resnet [06/13/19 00:30:57], input_random_flip: true
+MLPerf: resnet [06/13/19 00:30:57], input_resize: [224, 224]
+MLPerf: resnet [06/13/19 00:30:57], model_hp_initial_shape: [224, 224, 3]
+MLPerf: resnet [06/13/19 00:30:57], run_start
+MLPerf: resnet [06/13/19 00:30:57], run_start
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (224, 224, 3) -> (112, 112, 64)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 2, "use_bias" : false, "initializer": "truncated_normal", "filters": 64}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(112, 112, 64)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_initial_max_pool: "(112, 112, 64) -> (56, 56, 64)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (56, 56, 64)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_projection_shortcut: "(56, 56, 64) -> (56, 56, 256)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 64)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 64}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 64)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 64)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 64}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 64)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (56, 56, 256)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (56, 56, 256)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 256) -> (56, 56, 64)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 64}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 64)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 64)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 64}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 64)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (56, 56, 256)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (56, 56, 256)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 256) -> (56, 56, 64)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 64}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 64)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 64)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 64}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 64)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 64) -> (56, 56, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (56, 56, 256)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (56, 56, 256)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_projection_shortcut: "(56, 56, 256) -> (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 256) -> (28, 28, 512)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 2, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 256) -> (56, 56, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(56, 56, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (56, 56, 128) -> (28, 28, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 2, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 128) -> (28, 28, 512)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 512) -> (28, 28, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 128) -> (28, 28, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 128) -> (28, 28, 512)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 512) -> (28, 28, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 128) -> (28, 28, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 128) -> (28, 28, 512)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 512) -> (28, 28, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 128) -> (28, 28, 128)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 128}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 128)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 128) -> (28, 28, 512)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (28, 28, 512)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_projection_shortcut: "(28, 28, 512) -> (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 512) -> (14, 14, 1024)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 2, "use_bias" : false, "initializer": "truncated_normal", "filters": 1024}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 1024)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 512) -> (28, 28, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(28, 28, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (28, 28, 256) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 2, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 1024)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 1024}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 1024)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 1024) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 1024)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 1024}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 1024)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 1024) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 1024)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 1024}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 1024)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 1024) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 1024)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 1024}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 1024)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 1024) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 1024)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 1024}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 1024)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 1024) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 256)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 256}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 256)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 256) -> (14, 14, 1024)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 1024}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 1024)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_resnet_topology: " Block Input: (14, 14, 1024)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_projection_shortcut: "(14, 14, 1024) -> (7, 7, 2048)"
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 1024) -> (7, 7, 2048)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 2, "use_bias" : false, "initializer": "truncated_normal", "filters": 2048}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 2048)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 1024) -> (14, 14, 512)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(14, 14, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (14, 14, 512) -> (7, 7, 512)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 2, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: (7, 7, 512) -> (7, 7, 2048)
+MLPerf: resnet [06/13/19 00:30:57], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 2048}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 2048)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:57], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:57], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:57], model_hp_end_block: " Block Output: (7, 7, 2048)"
+MLPerf: resnet [06/13/19 00:30:58], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:58], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_resnet_topology: " Block Input: (7, 7, 2048)"
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: (7, 7, 2048) -> (7, 7, 512)
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: (7, 7, 512) -> (7, 7, 512)
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: (7, 7, 512) -> (7, 7, 2048)
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 2048}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 2048)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:58], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:58], model_hp_end_block: " Block Output: (7, 7, 2048)"
+MLPerf: resnet [06/13/19 00:30:58], model_hp_block_type: "bottleneck_block"
+MLPerf: resnet [06/13/19 00:30:58], model_hp_begin_block: {"block_type": "bottleneck_block"}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_resnet_topology: " Block Input: (7, 7, 2048)"
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: (7, 7, 2048) -> (7, 7, 512)
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: (7, 7, 512) -> (7, 7, 512)
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 512}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 512)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: (7, 7, 512) -> (7, 7, 2048)
+MLPerf: resnet [06/13/19 00:30:58], model_hp_conv2d_fixed_padding: {"stride": 1, "use_bias" : false, "initializer": "truncated_normal", "filters": 2048}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_batch_norm: {"scale": true, "epsilon": 1e-05, "shape": "(7, 7, 2048)", "training": true, "center": true, "momentum": 0.9}
+MLPerf: resnet [06/13/19 00:30:58], model_hp_shorcut_add
+MLPerf: resnet [06/13/19 00:30:58], model_hp_relu
+MLPerf: resnet [06/13/19 00:30:58], model_hp_dense: 1001
+MLPerf: resnet [06/13/19 00:30:58], model_hp_final_shape: [1001]
+MLPerf: resnet [06/13/19 00:30:58], train_loop
+MLPerf: resnet [06/13/19 00:30:58], eval_offset: 3
+MLPerf: resnet [06/13/19 00:30:58], opt_learning_rate: {"value": 25.000000}
+MLPerf: resnet [06/13/19 00:30:58], input_size: 1281167
+MLPerf: resnet [06/13/19 00:30:58], train_epoch:0
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:30:59], run_start
+MLPerf: resnet [06/13/19 00:31:00], run_start
+MLPerf: resnet [06/13/19 00:31:00], run_start
+MLPerf: resnet [06/13/19 00:31:00], run_start
+MLPerf: resnet [06/13/19 00:31:23], train_epoch:1
+MLPerf: resnet [06/13/19 00:31:41], train_epoch:2
+MLPerf: resnet [06/13/19 00:31:59], train_epoch:3
+MLPerf: resnet [06/13/19 00:32:17], eval_start
+MLPerf: resnet [06/13/19 00:32:19], eval_accuracy: {"value": 14.48800%, "epoch": 3}
+MLPerf: resnet [06/13/19 00:32:19], eval_stop
+MLPerf: resnet [06/13/19 00:32:19], train_epoch:4
+MLPerf: resnet [06/13/19 00:32:38], train_epoch:5
+MLPerf: resnet [06/13/19 00:32:56], train_epoch:6
+MLPerf: resnet [06/13/19 00:33:14], train_epoch:7
+MLPerf: resnet [06/13/19 00:33:32], eval_start
+MLPerf: resnet [06/13/19 00:33:32], eval_accuracy: {"value": 29.24400%, "epoch": 7}
+MLPerf: resnet [06/13/19 00:33:32], eval_stop
+MLPerf: resnet [06/13/19 00:33:32], train_epoch:8
+MLPerf: resnet [06/13/19 00:33:50], train_epoch:9
+MLPerf: resnet [06/13/19 00:34:08], train_epoch:10
+MLPerf: resnet [06/13/19 00:34:27], train_epoch:11
+MLPerf: resnet [06/13/19 00:34:45], eval_start
+MLPerf: resnet [06/13/19 00:34:45], eval_accuracy: {"value": 35.11800%, "epoch": 11}
+MLPerf: resnet [06/13/19 00:34:45], eval_stop
+MLPerf: resnet [06/13/19 00:34:45], train_epoch:12
+MLPerf: resnet [06/13/19 00:35:03], train_epoch:13
+MLPerf: resnet [06/13/19 00:35:21], train_epoch:14
+MLPerf: resnet [06/13/19 00:35:39], train_epoch:15
+MLPerf: resnet [06/13/19 00:35:57], eval_start
+MLPerf: resnet [06/13/19 00:35:58], eval_accuracy: {"value": 26.98200%, "epoch": 15}
+MLPerf: resnet [06/13/19 00:35:58], eval_stop
+MLPerf: resnet [06/13/19 00:35:58], train_epoch:16
+MLPerf: resnet [06/13/19 00:36:16], train_epoch:17
+MLPerf: resnet [06/13/19 00:36:34], train_epoch:18
+MLPerf: resnet [06/13/19 00:36:52], train_epoch:19
+MLPerf: resnet [06/13/19 00:37:10], eval_start
+MLPerf: resnet [06/13/19 00:37:11], eval_accuracy: {"value": 34.54000%, "epoch": 19}
+MLPerf: resnet [06/13/19 00:37:11], eval_stop
+MLPerf: resnet [06/13/19 00:37:11], train_epoch:20
+MLPerf: resnet [06/13/19 00:37:29], train_epoch:21
+MLPerf: resnet [06/13/19 00:37:47], train_epoch:22
+MLPerf: resnet [06/13/19 00:38:05], train_epoch:23
+MLPerf: resnet [06/13/19 00:38:23], eval_start
+MLPerf: resnet [06/13/19 00:38:23], eval_accuracy: {"value": 38.89200%, "epoch": 23}
+MLPerf: resnet [06/13/19 00:38:23], eval_stop
+MLPerf: resnet [06/13/19 00:38:23], train_epoch:24
+MLPerf: resnet [06/13/19 00:38:41], train_epoch:25
+MLPerf: resnet [06/13/19 00:38:59], train_epoch:26
+MLPerf: resnet [06/13/19 00:39:18], train_epoch:27
+MLPerf: resnet [06/13/19 00:39:36], eval_start
+MLPerf: resnet [06/13/19 00:39:36], eval_accuracy: {"value": 40.09800%, "epoch": 27}
+MLPerf: resnet [06/13/19 00:39:36], eval_stop
+MLPerf: resnet [06/13/19 00:39:36], train_epoch:28
+MLPerf: resnet [06/13/19 00:39:54], train_epoch:29
+MLPerf: resnet [06/13/19 00:40:12], train_epoch:30
+MLPerf: resnet [06/13/19 00:40:30], train_epoch:31
+MLPerf: resnet [06/13/19 00:40:48], eval_start
+MLPerf: resnet [06/13/19 00:40:49], eval_accuracy: {"value": 35.80600%, "epoch": 31}
+MLPerf: resnet [06/13/19 00:40:49], eval_stop
+MLPerf: resnet [06/13/19 00:40:49], train_epoch:32
+MLPerf: resnet [06/13/19 00:41:07], train_epoch:33
+MLPerf: resnet [06/13/19 00:41:25], train_epoch:34
+MLPerf: resnet [06/13/19 00:41:43], train_epoch:35
+MLPerf: resnet [06/13/19 00:42:01], eval_start
+MLPerf: resnet [06/13/19 00:42:02], eval_accuracy: {"value": 41.08800%, "epoch": 35}
+MLPerf: resnet [06/13/19 00:42:02], eval_stop
+MLPerf: resnet [06/13/19 00:42:02], train_epoch:36
+MLPerf: resnet [06/13/19 00:42:20], train_epoch:37
+MLPerf: resnet [06/13/19 00:42:38], train_epoch:38
+MLPerf: resnet [06/13/19 00:42:56], train_epoch:39
+MLPerf: resnet [06/13/19 00:43:14], eval_start
+MLPerf: resnet [06/13/19 00:43:14], eval_accuracy: {"value": 52.10200%, "epoch": 39}
+MLPerf: resnet [06/13/19 00:43:14], eval_stop
+MLPerf: resnet [06/13/19 00:43:14], train_epoch:40
+MLPerf: resnet [06/13/19 00:43:32], train_epoch:41
+MLPerf: resnet [06/13/19 00:43:50], train_epoch:42
+MLPerf: resnet [06/13/19 00:44:08], train_epoch:43
+MLPerf: resnet [06/13/19 00:44:27], eval_start
+MLPerf: resnet [06/13/19 00:44:27], eval_accuracy: {"value": 54.73200%, "epoch": 43}
+MLPerf: resnet [06/13/19 00:44:27], eval_stop
+MLPerf: resnet [06/13/19 00:44:27], train_epoch:44
+MLPerf: resnet [06/13/19 00:44:45], train_epoch:45
+MLPerf: resnet [06/13/19 00:45:03], train_epoch:46
+MLPerf: resnet [06/13/19 00:45:21], train_epoch:47
+MLPerf: resnet [06/13/19 00:45:39], eval_start
+MLPerf: resnet [06/13/19 00:45:40], eval_accuracy: {"value": 56.37800%, "epoch": 47}
+MLPerf: resnet [06/13/19 00:45:40], eval_stop
+MLPerf: resnet [06/13/19 00:45:40], train_epoch:48
+MLPerf: resnet [06/13/19 00:45:58], train_epoch:49
+MLPerf: resnet [06/13/19 00:46:16], train_epoch:50
+MLPerf: resnet [06/13/19 00:46:34], train_epoch:51
+MLPerf: resnet [06/13/19 00:46:52], eval_start
+MLPerf: resnet [06/13/19 00:46:52], eval_accuracy: {"value": 64.24800%, "epoch": 51}
+MLPerf: resnet [06/13/19 00:46:52], eval_stop
+MLPerf: resnet [06/13/19 00:46:52], train_epoch:52
+MLPerf: resnet [06/13/19 00:47:11], train_epoch:53
+MLPerf: resnet [06/13/19 00:47:29], train_epoch:54
+MLPerf: resnet [06/13/19 00:47:47], train_epoch:55
+MLPerf: resnet [06/13/19 00:48:05], eval_start
+MLPerf: resnet [06/13/19 00:48:05], eval_accuracy: {"value": 61.98200%, "epoch": 55}
+MLPerf: resnet [06/13/19 00:48:05], eval_stop
+MLPerf: resnet [06/13/19 00:48:05], train_epoch:56
+MLPerf: resnet [06/13/19 00:48:23], train_epoch:57
+MLPerf: resnet [06/13/19 00:48:41], train_epoch:58
+MLPerf: resnet [06/13/19 00:48:59], train_epoch:59
+MLPerf: resnet [06/13/19 00:49:17], eval_start
+MLPerf: resnet [06/13/19 00:49:18], eval_accuracy: {"value": 67.31200%, "epoch": 59}
+MLPerf: resnet [06/13/19 00:49:18], eval_stop
+MLPerf: resnet [06/13/19 00:49:18], train_epoch:60
+MLPerf: resnet [06/13/19 00:49:36], train_epoch:61
+MLPerf: resnet [06/13/19 00:49:54], train_epoch:62
+MLPerf: resnet [06/13/19 00:50:12], train_epoch:63
+MLPerf: resnet [06/13/19 00:50:30], eval_start
+MLPerf: resnet [06/13/19 00:50:31], eval_accuracy: {"value": 70.46000%, "epoch": 63}
+MLPerf: resnet [06/13/19 00:50:31], eval_stop
+MLPerf: resnet [06/13/19 00:50:31], train_epoch:64
+MLPerf: resnet [06/13/19 00:50:49], train_epoch:65
+MLPerf: resnet [06/13/19 00:51:07], train_epoch:66
+MLPerf: resnet [06/13/19 00:51:25], train_epoch:67
+MLPerf: resnet [06/13/19 00:51:43], eval_start
+MLPerf: resnet [06/13/19 00:51:43], eval_accuracy: {"value": 70.24000%, "epoch": 67}
+MLPerf: resnet [06/13/19 00:51:43], eval_stop
+MLPerf: resnet [06/13/19 00:51:43], train_epoch:68
+MLPerf: resnet [06/13/19 00:52:01], train_epoch:69
+MLPerf: resnet [06/13/19 00:52:19], train_epoch:70
+MLPerf: resnet [06/13/19 00:52:37], train_epoch:71
+MLPerf: resnet [06/13/19 00:52:56], eval_start
+MLPerf: resnet [06/13/19 00:52:56], eval_accuracy: {"value": 74.31600%, "epoch": 71}
+MLPerf: resnet [06/13/19 00:52:56], eval_stop
+MLPerf: resnet [06/13/19 00:52:56], train_epoch:72
+MLPerf: resnet [06/13/19 00:53:14], train_epoch:73
+MLPerf: resnet [06/13/19 00:53:32], train_epoch:74
+MLPerf: resnet [06/13/19 00:53:50], train_epoch:75
+MLPerf: resnet [06/13/19 00:54:08], eval_start
+MLPerf: resnet [06/13/19 00:54:09], eval_accuracy: {"value": 74.72800%, "epoch": 75}
+MLPerf: resnet [06/13/19 00:54:09], eval_stop
+MLPerf: resnet [06/13/19 00:54:09], train_epoch:76
+MLPerf: resnet [06/13/19 00:54:27], train_epoch:77
+MLPerf: resnet [06/13/19 00:54:45], train_epoch:78
+MLPerf: resnet [06/13/19 00:55:03], train_epoch:79
+MLPerf: resnet [06/13/19 00:55:21], eval_start
+MLPerf: resnet [06/13/19 00:55:21], eval_accuracy: {"value": 75.98000%, "epoch": 79}
+MLPerf: resnet [06/13/19 00:55:21], eval_stop
+MLPerf: resnet [06/13/19 00:55:21], run_stop
+MLPerf: resnet [06/13/19 00:55:21], run_final
+MLPerf: resnet [06/13/19 00:55:21], Total runtime: 24.409763 minutes

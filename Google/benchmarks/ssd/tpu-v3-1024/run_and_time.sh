@@ -1,0 +1,16 @@
+PYTHONPATH=.:/tmp/code_dir-ssd_code_1560186688/staging/models/rough/transformer/data_generators/:/tmp/code_dir-ssd_code_1560186688/staging/models/rough/:$PYTHONPATH python3 ssd_main.py --eval_batch_size=2048 \
+--hparams=use_bfloat16=true,lr_warmup_epoch=20,first_lr_drop_epoch=56.0,second_lr_drop_epoch=70.0,base_learning_rate=2.5e-3,in_memory_eval=true,distributed_group_size=8,conv0_space_to_depth=true,tpu_slice_row=16,tpu_slice_col=16,dbn_tile_row=2,dbn_tile_col=4 \
+--input_partition_dims=1 --input_partition_dims=4 --input_partition_dims=1 --input_partition_dims=1 \
+--iterations_per_loop=313 \
+--mode=train_and_eval \
+--model_dir=gs://mlsh_test/dev/assets/model_dir-ssd_model_dir_1560186688 \
+--num_epochs=80 \
+--num_shards=256 \
+--resnet_checkpoint=gs://mlperf-euw4/benchmark_data/resnet34_ssd_checkpoint \
+--tpu_name=TEST_TPU_1560186703.67 \
+--train_batch_size=2048 \
+--training_file_pattern=gs://mlperf-euw4/benchmark_data/ssd_coco/train-* \
+--use_async_checkpoint=True \
+--use_tpu=true \
+--val_json_file=gs://mlperf-euw4/benchmark_data/ssd_coco/instances_val2017.json \
+--validation_file_pattern=gs://mlperf-euw4/benchmark_data/ssd_coco_256/coco_val*

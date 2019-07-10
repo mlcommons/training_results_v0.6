@@ -1,0 +1,46 @@
+# Copyright FUJITSU LIMITED 2019
+# This file is the body to submit training job.
+
+echo "`date +%s.%N` #script start at `date`"
+
+Exec(){
+    echo "$@"
+    "$@"
+}
+
+DataDir="Path/Dataset"
+RepoDir="$HOME/MXNet/nvidia-mxnet"
+ScriptDir="$RepoDir/JobScripts"
+
+Bind="$ScriptDir/image_classification/ompi_bind_4gpu.sh"
+NumProc=`expr 4 \* $NHOSTS`
+
+TmpDataDir="$DataDir"
+
+cp ${Bind} ${LogDir}/
+
+for ii in `seq 0 $((${NumTrainings}-1))`; do
+    echo "`date +%s.%N` # cache cleaning at `date`"
+    sed -e 's/$/ slots=1/' $SGE_JOB_HOSTLIST > "$LogDir/hostfile"
+    Exec mpirun -n $NHOSTS --hostfile ${LogDir}/hostfile ${ScriptDir}/cache_cleaning.sh
+
+    sed -e 's/$/ slots=4/' $SGE_JOB_HOSTLIST > "$LogDir/hostfile"
+
+    cp "$LogDir/parameters" "$LogDir/parameters_$ii"
+    sed -i -e 's|$TmpDataDir|'"$TmpDataDir|" "$LogDir/parameters_$ii"
+    sed -i -e 's|_SEED_|'"$RANDOM|" "$LogDir/parameters_$ii"
+    . "$LogDir/parameters_$ii"
+
+# PARAMS[@] are defined in the file "parameters".
+    echo "`date +%s.%N` #mpirun"
+    Exec mpirun -n ${NumProc} --mca btl openib \
+        --hostfile ${LogDir}/hostfile \
+        -x LD_PRELOAD=${OMPI_HOME}/lib/libmpi.so \
+        -x ParameterFile="$LogDir/parameters_$ii" \
+        -x LOGDIR=${LogDir} \
+        ${Bind} | tee "$LogDir/result_$ii.txt"
+done
+
+echo "`date +%s.%N` #finished at `date`"
+
+# End of file

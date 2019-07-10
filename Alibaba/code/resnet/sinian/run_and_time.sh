@@ -1,0 +1,21 @@
+./resnet50_op_auto 
+	-blueprint full_model_v1.5.txt 
+	-configBase b256_nhwc_1.5 
+	-isFp16 1 
+	-nhwc 1 
+	-loops 7020 
+	-reportInterval 78 
+	-saveInterval 78 
+	-reserveMemMB 5120 
+	-dataDir /work1/imagenet 
+	-distribute 1 
+	-cycleLength 1 
+	-useLars 1 
+	-warmupEpochs 15 
+	-learningRate 0.390625 
+	-polyLR "7020,0.0" 
+	-labelSmoothing 0.1 
+	-weightDecay 0.00024 
+	-evalSchedule "1:312,5928:78" 
+	-stopThreshold 0.759 
+	-mlperf 1 

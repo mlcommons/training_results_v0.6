@@ -1,0 +1,107 @@
+#!/bin/bash
+# Copyright FUJITSU LIMITED 2019
+
+LANG=
+
+echo "`date +%s.%N` #Submit at `date`"
+
+NumTrainings=1
+
+if [ $# -lt 1 ] ; then
+    cat << EOF >&2
+usage: $0 numNodes timeLimit
+When numNodes is larger than 0 (zero), the job is executed using mpiexec.
+Otherwise, the job is executed directlry.
+Each node has 4 processes and uses 4 GPUs.
+The timeLimit is the maximum of execution time with the format hh:mm:ss.
+EOF
+    exit 1
+fi
+
+GroupID=$ABCIGroupID
+
+NumNodes="$1" && shift
+TimeLimit="$1" && shift
+
+MyDir=`readlink -f "$0" | xargs dirname`
+MyName=`basename "$0"`
+Time=`date "+%y%m%d%H%M%S"`
+HostName=`hostname | awk -F . '{ print $1; }'`
+JobName="$MyName.$Time.$HostName."`printf "%06x" $$`
+
+BaseFile="$MyDir/BatchBase"
+
+RecursiveMkDir(){
+    local Dir="$1"
+    local Parent=`dirname "$Dir"`
+    if [ ! -d "$Parent" ] ; then
+        RecursiveMkDir "$Parent" || return
+    fi
+    mkdir "$Dir" || return
+    chgrp "$GroupID" "$Dir"
+    chmod g+s "$Dir"
+    return
+}
+
+LogDir="$MyDir/log"/`printf "%04d" $NumNodes`/"$JobName"
+RecursiveMkDir "$LogDir" || exit
+
+ScriptFile="$LogDir/script"
+ParameterFile="$LogDir/parameters"
+cp "$MyDir/parameters" "$ParameterFile"
+
+NumHosts=`expr "$NumNodes" + 0`
+if [ $NumHosts -lt 1 ] ; then
+    NumHosts=1
+fi
+
+cat << EOF > "$ScriptFile"
+#!/bin/bash
+
+#$ -l rt_F=$NumHosts
+#$ -l h_rt=$TimeLimit
+#$ -j n
+#$ -o $LogDir/stdout.txt
+#$ -e $LogDir/stderr.txt
+#$ -cwd
+
+NumTrainings=$NumTrainings
+
+. "$MyDir/setenv"
+
+if [ "\$NHOSTS" != $NumHosts ] ; then
+    echo "\$0: inconsistent number of nodes" >&2
+    exit 1
+fi
+
+LogDir="$LogDir"
+if [ ! -d "\$LogDir" ] ; then
+    echo "\$LogDir: not a directory" >&2
+    exit 1
+fi
+
+printenv > "$LogDir/environ"
+
+if [ ! -d "\$SGE_LOCALDIR" ] ; then
+    echo "\$SGE_LOCALDIR: not a directory" >&2
+    exit 1
+fi
+
+EOF
+
+cat $BaseFile >> "$ScriptFile"
+chgrp "$GroupID" "$ScriptFile"
+
+echo ---------------
+echo Job information
+echo ---------------
+echo Mode: MPI
+echo NumNodes: $NumNodes
+echo LogDir: $LogDir
+
+echo "`date +%s.%N` #qsub"
+echo "> qsub" -g "$GroupID" "$ScriptFile"
+qsub -g "$GroupID" "$ScriptFile"
+
+# End of file
+
