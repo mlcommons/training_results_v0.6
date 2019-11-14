@@ -10,7 +10,7 @@ This problem uses Attention mechanisms to do language translation.
 
 ### Steps to download and verify data
 
-Steps to download, tokenize, and convert the reference tokenization to the proper pytorch file format:
+Steps to download the dataset, tokenize it, and convert the reference tokenization to the proper pytorch file format:
 
 ```
 docker build --pull -t mlperf-nvidia:translation .
