@@ -28,7 +28,7 @@ import numpy as np
 import six
 from six.moves import xrange  # pylint: disable=redefined-builtin
 
-from mlperf_log_utils import mlperf_print, mlperf_submission_log, set_seeds, get_rank
+from mlperf_log_utils import mlperf_print, mlperf_submission_log
 
 LUA = "<lua_index_compat>"
 PAD = "<pad>_"

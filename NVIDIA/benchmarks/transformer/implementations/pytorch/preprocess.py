@@ -28,7 +28,7 @@ import urllib
 import six
 import urllib.request
 
-from mlperf_log_utils import mlperf_print, mlperf_submission_log, set_seeds, get_rank
+from mlperf_log_utils import mlperf_print, mlperf_submission_log
 
 from utils import tokenizer
 
@@ -464,8 +464,6 @@ def main(unused_argv):
 
 
 if __name__ == "__main__":
-
-  mlperf_log.ROOT_DIR_TRANSFORMER = os.path.dirname(os.path.realpath(__file__))
 
   parser = argparse.ArgumentParser()
   parser.add_argument(
