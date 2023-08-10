@@ -10,10 +10,15 @@ This problem uses Attention mechanisms to do language translation.
 
 ### Steps to download and verify data
 
-Downloading and preprocessing the data is handled inside submission scripts. To do this manually run 
-    bash run_preprocessing.sh && bash run_conversion.sh
-    
-The raw downloaded data is stored in /raw_data and preprocessed data is stored in /workspace/translation/examples/translation/wmt14_en_de. Your external DATADIR path can be mounted to this location to be used in the following steps. The vocabulary file provided by the MLPerf v0.6 transformer reference is stored inside of the container at /workspace/translation/reference_dictionary.ende.txt.
+Steps to download the dataset, tokenize it, and convert the reference tokenization to the proper pytorch file format:
+
+```
+docker build --pull -t mlperf-nvidia:translation .
+mkdir -p $DATADIR/raw_data
+docker  run --rm -it  -u $(id -u):$(id -g)  -v $DATADIR:/workspace/translation/examples/translation/wmt14_en_de -v $DATADIR/raw_data:/raw_data mlperf-nvidia:translation
+bash run_preprocessing.sh
+bash run_conversion.sh
+```
 
 ### Steps to run and time
 
